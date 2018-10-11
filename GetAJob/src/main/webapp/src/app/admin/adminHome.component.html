@@ -1,0 +1,23 @@
+<app-menu></app-menu>
+<h1>Administration Page</h1>
+
+<div style="text-align: center; margin-top:27px;">
+  <div class="container" *ngFor="let user of users">
+    <img src={{user.photo_url}} matTooltip="View Profile" style="cursor: pointer; border-radius: 50%; float: left; margin-top:10px; margin-left: 5px;" alt="Avatar" height="50" width="50" [routerLink] = "['/profiles', user.username]">
+    <div class="row">
+      <button mat-raised-button style="float: left; margin-left: 15px; margin-top: 20px;" (click)="ban(user)">Ban User</button>
+    </div>
+    <mat-list style="width: 300px;">
+      <mat-list-item style="height: 70px; ">
+        {{user.fullname}}
+        <mat-checkbox [(ngModel)]="user.checked" style="margin: 10px;"></mat-checkbox>
+      </mat-list-item>
+    </mat-list>
+    <mat-divider></mat-divider>
+  </div>
+</div>
+<div  class="row" style=" margin-left: 10px; margin-right:210px">
+  <button mat-raised-button style="margin-top: 15px; margin-bottom: 15px; float: right;" (click)="export()">Export selected as XML</button>
+  <button mat-raised-button style="margin-top: 15px; margin-bottom: 15px; float: right;" (click)="exportAll()">Export all as XML</button>
+</div>
+

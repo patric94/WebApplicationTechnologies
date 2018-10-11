@@ -1,0 +1,43 @@
+
+<app-menu></app-menu>
+<br>
+
+<div class="col-sm-3" style="margin-left: 15px; padding: 0px;">
+  <mat-nav-list *ngFor="let chat of chatList let i = index" >
+    <mat-list-item style="border: 1px solid #3d8a69; height: 60px; cursor: pointer;" (click)="onRowClicked(chat)">
+        <img src={{chat.view_photo_url}} style="border-radius: 50%; float: left; margin: 10px;" alt="Avatar" height="45" width="45">
+        <p>
+          <b>{{chat.view_fullname}}</b>
+        </p>
+    </mat-list-item>
+  </mat-nav-list>
+</div>
+
+<div class="col-sm-7">
+
+  <mat-card>
+    <mat-card-content >
+      <mat-list  *ngFor="let message of messageList let j = index">
+        <img src={{message.photo_url}} matTooltip="View Profile" style="cursor: pointer; border-radius: 50%; float: left; margin: 10px;" alt="Avatar" height="45" width="45" (click)="navProf(message.sender)">
+        <p style=" border-radius: 25px; border: 2px solid #82cca7; padding: 20px; width: 750px;">
+          <b style="cursor: pointer;" (click)="navProf(message.sender)">{{message.sender}}</b> {{message.content}}
+        </p>
+      </mat-list>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card style="background-color: rgba(114, 114, 114, 0.08);">
+    <mat-card-title style="font-size: 16px;">Send message to <b>{{currentlyViewing.view_fullname}}</b></mat-card-title>
+    <form>
+      <mat-form-field appearance="outline" style="width: 750px;">
+        <mat-label>Your message</mat-label>
+        <input matInput [(ngModel)]="data.message" name="message">
+      </mat-form-field>
+    </form>
+    <mat-card-actions>
+      <div class="row" style="margin: 10px;">
+        <button mat-raised-button style="float: right;" (click)="newMessage(data.message, currentlyViewing)">Send</button>
+      </div>
+    </mat-card-actions>
+  </mat-card>
+</div>

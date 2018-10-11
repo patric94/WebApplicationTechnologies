@@ -1,0 +1,48 @@
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar {
+  background-color: #3d8a69;
+}
+
+.mat-tab-group.mat-primary .mat-tab-label:not(.mat-tab-disabled):focus, .mat-tab-group.mat-primary .mat-tab-link:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-primary .mat-tab-label:not(.mat-tab-disabled):focus, .mat-tab-nav-bar.mat-primary .mat-tab-link:not(.mat-tab-disabled):focus{
+  background-color: #82cca7;
+}
+/* Styles for tab labels */
+.mat-tab-label {
+  min-width: 25px !important;
+  padding: 5px;
+  background-color: white;
+  color: black;
+  font-weight: 700;
+}
+
+/* Styles for the active tab label */
+.mat-tab-label.mat-tab-label-active {
+  min-width: 25px !important;
+  padding: 5px;
+  background-color: #82cca7;
+  color: black;;
+  font-weight: 700;
+}
+
+
+.mat-stroked-button{
+  border-left: 15px;
+  border-right: 15px;
+  box-sizing: content-box;
+  min-width: 125px;
+  font-size: 16px;
+  margin-bottom: 2px;
+  margin-left: 30px;
+  background-color: white;
+}
+
+.mat-stroked-button:hover{
+  color: #3d8a69;
+}
+
+button:focus{
+  background-color: #82cca7;
+}
+
+.button-row button{
+  margin-right: 8px;
+}

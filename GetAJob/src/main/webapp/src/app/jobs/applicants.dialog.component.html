@@ -1,0 +1,38 @@
+<h1 mat-dialog-title>People who applied to your job</h1>
+
+
+<div mat-dialog-content>
+
+  <mat-nav-list>
+    <mat-list-item style=" height: fit-content; cursor: pointer" (click)="closeNnav(applicant.username)" *ngFor="let applicant of applicantList">
+      <img src={{applicant.photo_url}} style="margin-right: 10px; border-radius: 50%;" alt="Avatar" height="30" width="30">
+      <div>
+        <span style="font-size: 18px;">{{applicant.firstname}} {{applicant.lastname}}</span>
+        <span style="color: gray; font-size: 12px;">  {{applicant.curr_pos}} </span>
+        <span  class="text" style="color: gray; font-size: 12px;" *ngIf="applicant.curr_inst">  at {{applicant.curr_inst}}</span>
+      </div>
+      <br>
+
+    </mat-list-item>
+    <br>
+  </mat-nav-list>
+
+</div>
+<br>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Ok</button>
+</div>
+
+<!--//-->
+<!--<mat-card-header style="justify-content: center;" >-->
+  <!--<div style=" margin-right: 3px;">-->
+    <!--<img src={{friend.photo_url}} style="border-radius: 50%;" alt="Avatar" height="130" width="130">-->
+  <!--</div>-->
+<!--</mat-card-header>-->
+<!--<br>-->
+<!--<mat-card-title  style=" display: flex; align-items: center; justify-content: center;">-->
+  <!--{{friend.firstname}} {{friend.lastname}}-->
+<!--</mat-card-title>-->
+<!--<mat-card-subtitle style="display: flex; align-items: center; justify-content: center; color: gray; font-size: 14px;">-->
+  <!--{{friend.curr_pos}} <span style="margin-left: 5px" *ngIf="friend.curr_inst"> at {{friend.curr_inst}}</span>-->
+<!--</mat-card-subtitle>-->

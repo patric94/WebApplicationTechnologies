@@ -1,0 +1,47 @@
+<app-menu></app-menu>
+
+  <mat-tab-group style="margin:20px">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>people</mat-icon>
+        Friend Requests
+      </ng-template>
+      <mat-list role="list">
+        <mat-list-item *ngFor="let friend_request of friendRequestList let i = index" style="height: 75px;">
+          <img src={{friend_request.photo_url}} matTooltip="View Profile" style="cursor: pointer; border-radius: 50%; float: left; margin:15px;" alt="Avatar" height="50" width="50" (click)="navProf(friend_request.username)">
+          <div class="text" style="width: 70%; float: left;"><b style="cursor: pointer" (click)="navProf(friend_request.username)" matTooltip="View Profile">{{friend_request.username}} </b>  has requested to connect.</div>
+          <div class="button-row" style="width: 30%; float: right;">
+              <button mat-stroked-button (click)="accept(i, friend_request.username)">Accept <mat-icon>check_circle_outline</mat-icon> </button>
+              <button mat-stroked-button (click)="decline(i, friend_request.username)">Decline <mat-icon>highlight_off</mat-icon> </button>
+          </div>
+          <mat-divider></mat-divider>
+
+        </mat-list-item>
+      </mat-list>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>notifications_active</mat-icon>
+        Notifications
+      </ng-template>
+      <mat-list role="list">
+        <mat-list-item *ngFor="let like of likeNotificationList let j = index" style="height: 75px;" >
+          <img src={{like.photo_url}} matTooltip="View Profile" style="cursor: pointer; border-radius: 50%; float: left; margin:15px;" alt="Avatar" height="50" width="50" (click)="navProf(like.username)">
+          <div class="text" style="width: 70%; float: left;"><b style="cursor: pointer"(click)="navProf(like.username)" matTooltip="View Profile">{{like.username}}</b> liked your post.   <mat-icon style="cursor: pointer" (click)="viewLike(like.id, j)">clear</mat-icon></div>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+      </mat-list>
+      <mat-list role="list">
+        <mat-list-item *ngFor="let comment of commentNotificationList let z = index" style="height: 75px;">
+          <img src={{comment.photo_url}} matTooltip="View Profile" style="cursor: pointer; border-radius: 50%; float: left; margin:15px;" alt="Avatar" height="50" width="50" (click)="navProf(comment.username)">
+          <div class="text" style="width: 70%; float: left;"><b style="cursor: pointer" (click)="navProf(comment.username)" matTooltip="View Profile">{{comment.username}}</b> commented on your post.   <mat-icon style="cursor: pointer" (click)="viewComment(comment.id, z)">clear</mat-icon></div>
+          <mat-divider></mat-divider>
+        </mat-list-item>
+      </mat-list>
+    </mat-tab>
+  </mat-tab-group>
+
+
+
+

@@ -1,0 +1,23 @@
+<h1 mat-dialog-title>Add education info</h1>
+
+<div mat-dialog-content>
+  <mat-form-field style="width: 350px;">
+    <input matInput placeholder="Name" [(ngModel)]="data.name" cdkFocusInitial required [formControl]="name">
+    <mat-error *ngIf="name.invalid">{{getErrorMessageName()}}</mat-error>
+  </mat-form-field>
+  <br><br>
+  <mat-form-field style="width: 350px;">
+    <input matInput placeholder="Start Year" [(ngModel)]="data.startYear" required [formControl]="startYear">
+    <mat-error *ngIf="startYear.invalid">{{getErrorMessageStartYear()}}</mat-error>
+  </mat-form-field>
+  <br><br>
+  <mat-form-field style="width: 350px;">
+    <input matInput placeholder="End Year" [(ngModel)]="data.endYear" required [formControl]="endYear">
+    <mat-error *ngIf="endYear.invalid">{{getErrorMessageEndYear()}}</mat-error>
+  </mat-form-field>
+</div>
+<br>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" [disabled]="!name.valid || !startYear.valid || !endYear.valid">Add</button>
+</div>

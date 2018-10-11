@@ -1,0 +1,145 @@
+<app-menu></app-menu>
+<mat-card class="example-card" style="background-color: #c6e9c966;">
+  <img src={{user.photo_url}} style="border-radius: 50%; float: left;margin-right: 10px;" alt="Avatar" height="180" width="180">
+  <mat-card-header>
+
+
+    <div class="text" style="width: 60%; float: right;">
+      <h1><b>{{user.firstname}} {{user.lastname}}</b></h1>
+      <span style="font-size: 18px; color: grey;">{{user.curr_pos}}</span> <span style=" font-size: 18px; color: grey; margin-left: 3px" *ngIf="user.curr_inst"> at {{user.curr_inst}}</span>
+      <mat-card-subtitle style="margin-top: 5px;">
+        @{{user.username}}
+      </mat-card-subtitle>
+    </div>
+  </mat-card-header>
+
+  <br><br><br>
+  <mat-card-actions>
+    <button mat-raised-button color="primary" style="margin-left: 20px; margin-bottom: 15px; position: static;" (click)="openDialog()"><mat-icon>add_a_photo</mat-icon>  Upload a Picture</button>
+  </mat-card-actions>
+</mat-card>
+
+
+<!--<button class="button btn-info" *ngIf='showFile'-->
+        <!--(click)='showFiles(false)'>Hide Files</button>-->
+
+<!--<button class="button btn-info" *ngIf='!showFile'-->
+        <!--(click)='showFiles(true)'>Show Files</button>-->
+
+<!--<div [hidden]="!showFile">-->
+  <!--<div class="panel panel-primary">-->
+    <!--<div class="panel-heading">List of Files</div>-->
+    <!--<div *ngFor="let file of fileUploads | async">-->
+      <!--<div class="panel-body">-->
+        <!--<details-upload [fileUpload]='file'></details-upload>-->
+      <!--</div>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<mat-card class="example-card">
+  <div class="row">
+    <h2 style="width: 70%; float: left; margin-left: 25px; ">Education  <mat-icon>school</mat-icon></h2>
+    <button mat-raised-button  style="background-color: #d6e9c6; float:right; margin-right: 20px;" (click)="addEducation()">Add  <mat-icon>add_circle</mat-icon></button>
+  </div>
+  <br>
+
+  <mat-list role="list">
+    <mat-list-item style="height: 80px;" *ngFor="let education of educationList let i = index">
+
+        <div class="text" style="width: 70%; float: left;">
+          <p>{{education.name}} <br></p>
+          <p style="color: grey; font-size: 14px;"> <b> From:</b> {{education.startYear}}  <b>To:</b> {{education.endYear}}</p>
+        </div>
+
+      <mat-button-toggle-group style="margin-left: 140px; float: right;" #group="matButtonToggleGroup" value="{{education.public}}">
+        <mat-button-toggle value="true" (click)="makeEducationPublic(education)">
+          <mat-icon>public</mat-icon> Public
+        </mat-button-toggle>
+        <mat-button-toggle value="false" (click)="makeEducationPrivate(education)">
+          <mat-icon>people</mat-icon> Private
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+
+</mat-card>
+
+<mat-card class="example-card">
+  <div class="row">
+    <h2 style="width: 70%; float: left; margin-left: 25px; ">Work  <mat-icon>business</mat-icon></h2>
+    <button mat-raised-button  style="background-color: #d6e9c6; float:right; margin-right: 20px;" (click)="addWork()">Add  <mat-icon>add_circle</mat-icon></button>
+  </div>
+  <br>
+
+  <mat-list role="list">
+    <mat-list-item style="height: 80px;" *ngFor="let work of workList let i = index">
+
+      <div class="text" style="width: 70%; float: left;">
+        <p>{{work.name}} <br></p>
+        <p style="color: grey; font-size: 14px;"> <b> From:</b> {{work.startYear}}  <b>To:</b> {{work.endYear}}</p>
+      </div>
+
+      <mat-button-toggle-group style="margin-left: 140px; float: right;" #group="matButtonToggleGroup" value="{{work.public}}">
+        <mat-button-toggle value="true" (click)="makeWorkPublic(work)">
+          <mat-icon>public</mat-icon> Public
+        </mat-button-toggle>
+        <mat-button-toggle value="false" (click)="makeWorkPrivate(work)">
+          <mat-icon>people</mat-icon> Private
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</mat-card>
+
+<mat-card class="example-card">
+  <div class="row">
+    <h2 style="width: 70%; float: left; margin-left: 25px; ">Skills  <mat-icon>star</mat-icon></h2>
+    <button mat-raised-button  style="background-color: #d6e9c6; float:right; margin-right: 20px;" (click)="addSkill()">Add  <mat-icon>add_circle</mat-icon></button>
+  </div>
+  <br>
+  <mat-list role="list">
+    <mat-list-item style="height: 80px;" *ngFor="let skill of skillList let i = index">
+
+      <div class="text" style="width: 70%; float: left;">
+        <p>{{skill.name}} <br></p>
+      </div>
+
+      <mat-button-toggle-group style="margin-left: 140px; float: right;" #group="matButtonToggleGroup" value="{{skill.public}}">
+        <mat-button-toggle value="true" (click)="makeSkillPublic(skill)">
+          <mat-icon>public</mat-icon> Public
+        </mat-button-toggle>
+        <mat-button-toggle value="false" (click)="makeSkillPrivate(skill)">
+          <mat-icon>people</mat-icon> Private
+        </mat-button-toggle>
+      </mat-button-toggle-group>
+
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</mat-card>
+
+
+

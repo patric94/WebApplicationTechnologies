@@ -1,0 +1,81 @@
+<app-menu></app-menu>
+<div class="settings-container">
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Email addresses
+        </mat-panel-title>
+        <mat-panel-description>
+          Change your account's email address
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+        <p>Current email: <b>{{user.email}}</b></p>
+        <mat-form-field style="width: 500px;">
+          <input matInput style="margin-left: 15px;" type="email" placeholder="New email address" [(ngModel)]="data.email" [formControl]="email" required>
+          <mat-error *ngIf="email.invalid">{{getErrorMessageEmail()}}</mat-error>
+        </mat-form-field>
+        <br>
+        <br>
+        <button mat-stroked-button style="width:500px; display: block; margin-left: 15px;" [disabled]="!email.valid" (click)="updateEmail(data.email)" color="primary">Change email</button>
+    </mat-expansion-panel>
+
+
+
+
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Change password
+        </mat-panel-title>
+        <mat-panel-description>
+          Choose a unique password to protect your account
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+
+
+      <form [formGroup]="registrationFormGroup" (ngSubmit)="changePassword()">
+
+        <div [formGroup]="passwordFormGroup">
+
+          <div class="col" style="width: 60%; float:left;">
+            <mat-form-field style="width: 500px; margin: 15px;">
+              <input matInput placeholder="Type your current password" type="password" name="password" formControlName="password">
+            </mat-form-field>
+          </div>
+          <div class="col" style="width: 40%; float:right;">
+            <div class="bg-danger" style="margin: 15px; border-top: 20px;" *ngIf="passwordFormGroup.controls.password.errors?.required && passwordFormGroup.controls.password.touched">Current password is required</div>
+          </div>
+          <br>
+
+          <div class="col" style="width: 60%; float:left;">
+            <mat-form-field style="width: 500px; margin: 15px;">
+              <input matInput placeholder="Type your new password" type="password" name="newPassword" formControlName="newPassword">
+            </mat-form-field>
+          </div>
+          <div class="col" style="width: 40%; float:right;">
+            <div class="bg-danger" style="margin: 15px; border-top: 20px;" *ngIf="passwordFormGroup.controls.newPassword.errors?.required && passwordFormGroup.controls.newPassword.touched">New password is required</div>
+            <div class="bg-danger" style="margin: 15px; border-top: 20px;" *ngIf="passwordFormGroup.controls.newPassword.errors?.minlength">Minimum 8 characters needed</div>
+          </div>
+
+          <br>
+          <div class="col" style="width: 60%; float:left;">
+           <mat-form-field style="width: 500px; margin: 15px;">
+              <input matInput placeholder="Retype your new password" type="password" name="repeatPassword" formControlName="repeatPassword">
+            </mat-form-field>
+          </div>
+          <div class="col" style="width: 40%; float:right;">
+            <div class="bg-danger" style="margin: 15px;" *ngIf="passwordFormGroup.controls.repeatPassword.errors?.required && passwordFormGroup.controls.repeatPassword.touched">Repeat password is required</div>
+            <div class="bg-danger" style="margin: 15px;" *ngIf="passwordFormGroup.errors?.doesMatchPassword">Password does not match</div>
+          </div>
+
+          <br>
+          <button mat-stroked-button style="width:500px; display: block; margin-left: 15px;" [disabled]="!registrationFormGroup.valid" type="submit" color="primary">Change password</button>
+        </div>
+
+      </form>
+    </mat-expansion-panel>
+  </mat-accordion>
+
+</div>

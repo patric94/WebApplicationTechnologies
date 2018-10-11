@@ -1,0 +1,24 @@
+<h1 mat-dialog-title>People who liked yout post</h1>
+
+
+<div mat-dialog-content>
+
+  <mat-nav-list>
+    <mat-list-item style=" height: fit-content; cursor: pointer" (click)="closeNnav(liker.username)" *ngFor="let liker of likersList">
+      <img src={{liker.photo_url}} style="margin-right: 10px; border-radius: 50%;" alt="Avatar" height="30" width="30">
+      <div>
+        <span style="font-size: 18px;">{{liker.firstname}} {{liker.lastname}}</span>
+        <span style="color: gray; font-size: 12px;">  {{liker.curr_pos}} </span>
+        <span  class="text" style="color: gray; font-size: 12px;" *ngIf="liker.curr_inst">  at {{liker.curr_inst}}</span>
+      </div>
+      <br>
+
+    </mat-list-item>
+    <br>
+  </mat-nav-list>
+
+</div>
+<br>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Ok</button>
+</div>

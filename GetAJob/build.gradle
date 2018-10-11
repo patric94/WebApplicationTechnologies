@@ -1,0 +1,91 @@
+buildscript {
+    ext {
+        springBootVersion = '2.0.3.RELEASE'
+    }
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+group = 'com.ted'
+version = '0.0.1-SNAPSHOT'
+sourceCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-actuator')
+    compile('org.springframework.boot:spring-boot-starter-data-jpa')
+    compile('org.springframework.boot:spring-boot-starter-security')
+    compile('org.springframework.boot:spring-boot-starter-web')
+    compile( 'io.jsonwebtoken:jjwt:0.9.0')
+    runtime('mysql:mysql-connector-java')
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+    testCompile('org.springframework.security:spring-security-test')
+}
+
+def webappDir = "$projectDir/src/main/webapp"
+sourceSets {
+    main {
+        resources {
+            srcDirs = ["$webappDir/dist", "$projectDir/src/main/resources"]
+        }
+    }
+}
+
+processResources {
+    dependsOn "buildAngular"
+
+    from ("$webappDir/dist") {
+        into 'public'
+    }
+}
+
+//def angBuildDir = "$projectDir/build/www"
+task cleanAngular(type: Delete) {
+    delete "$webappDir/dist"
+//    delete "$angBuildDir"
+}
+
+task buildAngular(type:Exec) {
+    // installAngular should be run prior to this task
+    dependsOn "cleanAngular"
+    dependsOn "installAngular"
+    workingDir "$webappDir"
+    inputs.dir "$webappDir"
+    // Add task to the standard build group
+    group = BasePlugin.BUILD_GROUP
+    // ng doesn't exist as a file in windows -> ng.cmd
+    if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
+        commandLine "ng.cmd", "build"
+    } else {
+        commandLine "ng", "build"
+    }
+}
+
+task installAngular(type:Exec) {
+    workingDir "$webappDir"
+    inputs.dir "$webappDir"
+    group = BasePlugin.BUILD_GROUP
+    if (System.getProperty("os.name").toUpperCase().contains("WINDOWS")){
+        commandLine "npm.cmd", "install"
+    } else {
+        commandLine "npm", "install"
+    }
+}
+
+
+//task cleanResources(type: Delete) {
+//    delete 'build/resources'
+//}

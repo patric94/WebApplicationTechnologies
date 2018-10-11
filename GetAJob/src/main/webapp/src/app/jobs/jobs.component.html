@@ -1,0 +1,68 @@
+<app-menu></app-menu>
+
+<div  class="row" style=" margin: 10px;">
+  <button mat-raised-button style="margin-top: 15px; float: left;" (click)="openDialog()">Post a Job</button>
+</div>
+
+<div style="padding-left: 50px; padding-right:50px; width:80%; float: left; ">
+  <mat-tab-group style="margin:20px">
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>people</mat-icon>
+        My Network's Jobs
+      </ng-template>
+      <div class="jobs-container" *ngFor="let friendJob of friendJobList let i = index" >
+        <mat-card class="example-card">
+          <img src={{friendJob.photo_url}} matTooltip="View Profile" style="cursor: pointer; border-radius: 50%; float: left; margin-right: 10px; margin-right: 10px;" alt="Avatar" height="80" width="80" [routerLink]="['/profiles', friendJob.username]">
+          <mat-card-header>
+
+            <mat-card-title><b style="cursor: pointer;" [routerLink]="['/profiles', friendJob.username]">{{friendJob.username}}</b> posted a job </mat-card-title>
+
+          </mat-card-header>
+          <mat-card-content style="margin-left: 20px;">
+            <h1>{{friendJob.title}}</h1>
+            <p style="margin-left: 95px;">
+              {{friendJob.description}}
+            </p>
+          </mat-card-content>
+
+          <mat-card-actions>
+            <div  class="row" style=" margin: 10px;">
+              <button mat-raised-button style="margin-top: 15px; float: left;" *ngIf="friendJob.status===1" disabled matTooltip="You have already applied">Apply</button>
+              <button mat-raised-button style="margin-top: 15px; float: left;" *ngIf="friendJob.status===0" (click)="apply(friendJob)">Apply</button>
+            </div>
+          </mat-card-actions>
+          <br>
+        </mat-card>
+      </div>
+    </mat-tab>
+
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <mat-icon>person</mat-icon>
+        My Jobs
+      </ng-template>
+
+
+      <div class="jobs-container" *ngFor="let job of jobList let i = index" >
+        <mat-card class="example-card">
+          <mat-card-header>
+            <mat-card-title><h1>{{job.title}}</h1></mat-card-title>
+          </mat-card-header>
+          <mat-card-content>
+            <p style="margin-left: 13px;">
+              {{job.description}}
+            </p>
+          </mat-card-content>
+          <mat-card-actions>
+            <div  class="row" style=" margin: 10px;">
+              <button mat-raised-button style="margin-top: 15px; float: left;" (click)="viewApplicants(job.id)">View Applicants</button>
+            </div>
+          </mat-card-actions>
+          <br>
+        </mat-card>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
+</div>
+

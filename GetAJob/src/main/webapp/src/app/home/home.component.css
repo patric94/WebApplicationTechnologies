@@ -1,0 +1,29 @@
+.home-profile-card {
+  margin: 20px;
+}
+
+.post-card{
+  margin: 20px;
+}
+
+.timeline-container{
+  margin: 20px;
+}
+
+img {
+  border-radius: 50%;
+}
+
+
+.example-button-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}
+
+

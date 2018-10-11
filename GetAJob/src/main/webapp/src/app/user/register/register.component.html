@@ -1,0 +1,73 @@
+<form class="col s12 white" name="form" (ngSubmit)="f.form.valid && register()" #f="ngForm">
+
+    <div class="row">
+      <div class="input-field col s12">
+        <div class="validate" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+          <input type="text" class="validate" name="username" [(ngModel)]="model.username" #username="ngModel" required minlength="4"/>
+          <label [attr.data-error]="username.errors!=null?(username.errors.required?'Required field!':'Minimum 4 characters needed'):''">Username</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <mat-icon matSuffix style="float: right; cursor: pointer;" (click)="hide = !hide">{{hide ? 'visibility' : 'visibility_off'}}</mat-icon>
+        <div class="validate" [ngClass]="{ 'has-error': f.submitted && !password.valid }">
+          <input style="margin-bottom: 28px" [type]="hide ? 'password' : 'text'" class="validate" name="password" [(ngModel)]="model.password" #password="ngModel" required minlength="8" />
+          <label [attr.data-error]="password.errors!=null?(password.errors.required?'Required field!':'Minimum 8 characters needed'):''">Password</label>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="input-field col s12">
+        <div class="validate" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+          <input type="email" class="validate" name="email" [(ngModel)]="model.email" #email="ngModel" [pattern]="emailPattern" required />
+          <label [attr.data-error]="email.errors!=null?(email.errors.required?'Required field!':'Invalid email!'):''">Email</label>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="row">
+      <div class="input-field col s6">
+        <div class="validate" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+          <input type="text" class="validate" name="name" [(ngModel)]="model.firstname" #firstname="ngModel"  required />
+         <label data-error="Required field!">First Name</label>
+        </div>
+      </div>
+      <div class="input-field col s6">
+        <div class="validate" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+          <input type="text" class="validate" name="name" [(ngModel)]="model.lastname" #lastname="ngModel"  required />
+          <label data-error="Required field!">Last Name</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s6">
+        <div class="validate" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+          <input type="text" class="validate" name="curr_pos" [(ngModel)]="model.curr_pos" #curr_pos="ngModel"  required />
+          <label data-error="Required field!">Current Position</label>
+        </div>
+      </div>
+      <div class="input-field col s6">
+        <div class="validate" [ngClass]="{ 'has-error': f.submitted && !username.valid }">
+          <input type="text" class="validate" name="curr_inst" [(ngModel)]="model.curr_inst" #curr_inst="ngModel"/>
+          <label>Institution</label>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="input-field col s12">
+        <div class="form-group">
+          <button [disabled]="!f.valid" class="btn btn-primary">Register</button>
+          <img *ngIf="loading" src="data:image/gif;base64,R0lGODlhEAAQAPIAAP///wAAAMLCwkJCQgAAAGJiYoKCgpKSkiH/C05FVFNDQVBFMi4wAwEAAAAh/hpDcmVhdGVkIHdpdGggYWpheGxvYWQuaW5mbwAh+QQJCgAAACwAAAAAEAAQAAADMwi63P4wyklrE2MIOggZnAdOmGYJRbExwroUmcG2LmDEwnHQLVsYOd2mBzkYDAdKa+dIAAAh+QQJCgAAACwAAAAAEAAQAAADNAi63P5OjCEgG4QMu7DmikRxQlFUYDEZIGBMRVsaqHwctXXf7WEYB4Ag1xjihkMZsiUkKhIAIfkECQoAAAAsAAAAABAAEAAAAzYIujIjK8pByJDMlFYvBoVjHA70GU7xSUJhmKtwHPAKzLO9HMaoKwJZ7Rf8AYPDDzKpZBqfvwQAIfkECQoAAAAsAAAAABAAEAAAAzMIumIlK8oyhpHsnFZfhYumCYUhDAQxRIdhHBGqRoKw0R8DYlJd8z0fMDgsGo/IpHI5TAAAIfkECQoAAAAsAAAAABAAEAAAAzIIunInK0rnZBTwGPNMgQwmdsNgXGJUlIWEuR5oWUIpz8pAEAMe6TwfwyYsGo/IpFKSAAAh+QQJCgAAACwAAAAAEAAQAAADMwi6IMKQORfjdOe82p4wGccc4CEuQradylesojEMBgsUc2G7sDX3lQGBMLAJibufbSlKAAAh+QQJCgAAACwAAAAAEAAQAAADMgi63P7wCRHZnFVdmgHu2nFwlWCI3WGc3TSWhUFGxTAUkGCbtgENBMJAEJsxgMLWzpEAACH5BAkKAAAALAAAAAAQABAAAAMyCLrc/jDKSatlQtScKdceCAjDII7HcQ4EMTCpyrCuUBjCYRgHVtqlAiB1YhiCnlsRkAAAOwAAAAAAAAAAAA==" />
+        </div>
+      </div>
+    </div>
+
+  </form>
+

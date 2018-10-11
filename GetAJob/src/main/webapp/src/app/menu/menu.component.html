@@ -1,0 +1,31 @@
+<div id="row" [hidden]="currentUser.username == 'admin'">
+  <div class="wrapper">
+    <div id="menu-bar">
+      <a routerLink=''><img src="../../assets/logo.png" alt="logo" height="55" width="95"></a>
+      <button mat-button [routerLink]="['/']"><mat-icon>home</mat-icon>Home</button>
+      <button mat-button [routerLink]="['/network']"><mat-icon>people</mat-icon>Network</button>
+      <button mat-button [routerLink]="['/jobs']"><mat-icon>business_center</mat-icon>Jobs</button>
+      <button mat-button [routerLink]="['/messaging']"><mat-icon>mail</mat-icon>Messaging</button>
+      <button mat-button [routerLink]="['/notifications']"><mat-icon matBadge={{notifications}} [matBadgeHidden]="notifications==0" matBadgeColor="accent">notifications</mat-icon>Notifications</button>
+
+      <button mat-button [matMenuTriggerFor]="me"><mat-icon>account_circle</mat-icon>Me</button>
+      <mat-menu #me="matMenu">
+        <button mat-menu-item [routerLink]="['/profile']"><mat-icon>mood</mat-icon>View Profile</button>
+        <button mat-menu-item [routerLink]="['/settings']"><mat-icon>settings</mat-icon>Settings</button>
+        <button mat-menu-item [routerLink]="['/login']"><mat-icon>meeting_room</mat-icon>Sign Out</button>
+      </mat-menu>
+
+    </div>
+  </div>
+</div>
+
+
+<div id="row-admin" [hidden]="currentUser.username != 'admin'">
+  <div class="wrapper-admin">
+    <div id="menu-bar-admin">
+      <a [routerLink]="['/admin_home']"><img src="../../assets/logo.png" alt="logo" height="55" width="95"></a>
+      <button mat-button [routerLink]="['/admin_home']"><mat-icon>home</mat-icon>Admin Page</button>
+      <button mat-button [routerLink]="['/login']"><mat-icon>meeting_room</mat-icon>Sign Out</button>
+    </div>
+  </div>
+</div>

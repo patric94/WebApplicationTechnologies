@@ -1,0 +1,31 @@
+.settings-container{
+  margin-top: 40px;
+  margin-left: 200px;
+  margin-right: 200px;
+}
+
+.mat-button[disabled], .mat-flat-button[disabled], .mat-icon-button[disabled], .mat-stroked-button[disabled] {
+  cursor: not-allowed;
+}
+
+.mat-button[disabled]:hover{
+  border-color: gray;
+  color: gray;
+}
+
+.bg-danger {
+  padding-top: 20px;
+  background-color: white;
+  color: red;
+  font-size: 11px;
+}
+
+.btn-primary {
+  border-color: gray;
+  color: gray;
+}
+
+
+.form-control[disabled] {
+  background-color: white;
+}

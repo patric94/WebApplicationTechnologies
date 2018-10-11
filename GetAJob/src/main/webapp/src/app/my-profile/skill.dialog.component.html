@@ -1,0 +1,13 @@
+<h1 mat-dialog-title>Add skill info</h1>
+
+<div mat-dialog-content>
+  <mat-form-field style="width: 350px;">
+    <input matInput placeholder="Name" [(ngModel)]="data.name" cdkFocusInitial required [formControl]="name">
+    <mat-error *ngIf="name.invalid">{{getErrorMessageName()}}</mat-error>
+  </mat-form-field>
+</div>
+<br>
+<div mat-dialog-actions>
+  <button mat-button (click)="onNoClick()">Cancel</button>
+  <button mat-button [mat-dialog-close]="data" [disabled]="!name.valid">Add</button>
+</div>

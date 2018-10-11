@@ -1,0 +1,13 @@
+.example-card {
+  margin: 20px 100px 20px 100px;
+  min-height: 250px;
+}
+
+.h1{
+  font-size: 30px;
+  font-family: initial;
+}
+
+.h2{
+  font-size: 20px;
+}

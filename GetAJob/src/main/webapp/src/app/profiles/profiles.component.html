@@ -1,0 +1,84 @@
+<app-menu></app-menu>
+
+<mat-card class="example-card" style="background-color: #c6e9c966;">
+  <img src={{user.photo_url}} style="border-radius: 50%; float: left;margin-right: 10px;" alt="Avatar" height="180" width="180">
+  <mat-card-header>
+
+
+    <div class="text" style="width: 60%; float: right;">
+      <h1><b>{{user.firstname}} {{user.lastname}}</b></h1>
+      <span style="font-size: 18px; color: grey;">{{user.curr_pos}}</span> <span style=" font-size: 18px; color: grey; margin-left: 3px" *ngIf="user.curr_inst"> at {{user.curr_inst}}</span>
+      <mat-card-subtitle style="margin-top: 5px;">
+        @{{user.username}}
+      </mat-card-subtitle>
+    </div>
+  </mat-card-header>
+
+  <br><br><br>
+  <mat-card-actions>
+    <button  mat-raised-button *ngIf="status===1" style="margin-left: 54px; margin-bottom: 15px; position: static; background-color: #3d8a69; color: white" [routerLink]="['/messaging']">MESSAGE</button>
+    <button mat-raised-button *ngIf="status===3" style="margin-left: 54px; margin-bottom: 15px; position: static;" color="primary" (click)="connect()">CONNECT</button>
+    <button mat-raised-button *ngIf="status===2" style="margin-left: 54px; margin-bottom: 15px; position: static;" color="primary" (click)="connect()">CONNECT</button>
+    <button mat-raised-button disabled *ngIf="status===0" style="margin-left: 54px; margin-bottom: 15px; position: static; background-color: #82cca7; color: white" >PENDING</button>
+
+  </mat-card-actions>
+</mat-card>
+
+
+
+<mat-card class="example-card">
+  <div class="row">
+    <h2 style="width: 70%; float: left; margin-left: 25px; ">Education  <mat-icon>school</mat-icon></h2>
+  </div>
+  <br>
+
+  <mat-list role="list">
+    <mat-list-item style="height: 80px;" *ngFor="let education of educationList let i = index">
+
+      <div class="text" style="width: 70%; float: left;">
+        <p>{{education.name}} <br></p>
+        <p style="color: grey; font-size: 14px;"> <b> From:</b> {{education.startYear}}  <b>To:</b> {{education.endYear}}</p>
+      </div>
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+
+</mat-card>
+
+
+<mat-card class="example-card">
+  <div class="row">
+    <h2 style="width: 70%; float: left; margin-left: 25px; ">Work  <mat-icon>business</mat-icon></h2>
+  </div>
+  <br>
+
+  <mat-list role="list">
+    <mat-list-item style="height: 80px;" *ngFor="let work of workList let i = index">
+
+      <div class="text" style="width: 70%; float: left;">
+        <p>{{work.name}} <br></p>
+        <p style="color: grey; font-size: 14px;"> <b> From:</b> {{work.startYear}}  <b>To:</b> {{work.endYear}}</p>
+      </div>
+
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</mat-card>
+
+
+<mat-card class="example-card">
+  <div class="row">
+    <h2 style="width: 70%; float: left; margin-left: 25px; ">Skills  <mat-icon>star</mat-icon></h2>
+  </div>
+  <br>
+  <mat-list role="list">
+    <mat-list-item style="height: 80px;" *ngFor="let skill of skillList let i = index">
+
+      <div class="text" style="width: 70%; float: left;">
+        <p>{{skill.name}} <br></p>
+      </div>
+
+      <mat-divider></mat-divider>
+    </mat-list-item>
+  </mat-list>
+</mat-card>

@@ -1,0 +1,50 @@
+.row .col.s7 {
+  width: 50%;
+  height: 50%;
+  float: right;
+  margin-top: 50px;
+  margin-bottom: 58px;
+  position: relative;
+  left: 80px;
+}
+
+.row .col.s5 {
+  margin-top: 90px;
+  float: left;
+}
+
+
+b{
+  font-size: 48px;
+  color:#1e1a43;
+}
+
+/*li a{
+ border: 1px solid #ddd;
+ margin-top: -1px;
+ background-color: #f6f6f6;
+ padding: 12px;
+ text-decoration: none;
+ font-size: 18px;
+ color: black;
+ display: block;
+}
+
+li a:hover:not(.header) {
+ background-color: #eee;
+}*/
+
+a{
+  color: black;
+}
+
+h1{
+  font-family: Verdana;
+  font-size: 30px;
+  font-weight: normal;
+  display: inline-block;
+  color: #3D8A69;
+  vertical-align: middle;
+  margin-top: 23px;
+}
+
